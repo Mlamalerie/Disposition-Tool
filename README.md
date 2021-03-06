@@ -1,5 +1,5 @@
 # Disposition
-Outil pour s'organiser dans la journée.
+Outil pour s'organiser dans la journée. https://disposition.netlify.app/
 
 ### ⚙ How to run it
 C'est simple.
