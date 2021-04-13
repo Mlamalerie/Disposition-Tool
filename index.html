@@ -18,19 +18,18 @@
 
 
         <div class="pomodoro-conteiner">
-            <header class="mb-2 p-5  ">
-               
-                    <p class="subtitle mt-2">(<a href="https://www.linkedin.com/in/mlamalisaidsalimo/" class="text-light">Mlamali SAID SALIMO</a>) </p>
-                    <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
-                    <p class="subtitle mt-2 ">Saisisser vos plages horaires puis vos <a style="text-decoration: none;" class="text-light" href="https://drive.google.com/open?id=1Vgq55BCeg5xz9gTCFtZfquklHEc1LsPb&authuser=saidsalimo%40eisti.eu&usp=drive_fs" target="_blank">tâches à remplir dans la journée.</a>  Appuyer sur REFRESH. Ajuster le temps de travail selon vos envies ! <br> N'hésitez pas à zoomer la page [ctrl +]</p>
+            <header class="mb-2 p-5">
+                <p class="subtitle mt-2">(<a href="https://www.linkedin.com/in/mlamalisaidsalimo/" class="text-light">Mlamali SAID SALIMO</a>) </p>
+                <h1 class="title">Disposition <span id="heureTotal"></span> </h1>
+                <p class="subtitle mt-2">Saisisser vos plages horaires puis vos <a style="text-decoration: none;" class="text-light" href="https://drive.google.com/open?id=1Vgq55BCeg5xz9gTCFtZfquklHEc1LsPb&authuser=saidsalimo%40eisti.eu&usp=drive_fs" target="_blank">tâches à remplir dans la journée.</a>  Appuyer sur REFRESH. Ajuster le temps de travail selon vos envies ! <br> N'hésitez pas à zoomer la page [ctrl +]</p>
 
             </header>
 
 
             <input  class="form-control mb-3 p-2 py-3 form-control-sm text-light shadow-sm rounded text-center" type="text" id="dispoheure"  value="8-10; 14-18;">
-            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" value="DataMining,  StatInf, Faire CV">
+            <input class="form-control  mb-3 p-2 form-control-sm text-light shadow-sm rounded text-center " type="text" id="dispotxt" placeholder="DataMining,  StatInf, Faire CV">
 
-            <div id="names" class="preferences px-4 py-4 mb-3 ">
+            <div id="names" class="preferences py-5">
 
 
                 <script>
@@ -138,7 +137,7 @@
                         console.log(DicMatiere);
 
                         let bay = document.createElement('div');
-                        bay.setAttribute("class","session justify-content-center my-2  ");
+                        bay.setAttribute("class","session mx-4");
                         bay.innerHTML = " <h4 id='session-label' class='session-title my-2 '><u class='highlight rounded'>" + nomMatiere + "</u></h4>   <div class='plus-minus'>  <button id='session-plus'  class='session-plus' onclick='plus(this)' value='" + nomMatiere + "' >+</button> <span id='nb-" + nomMatiere + "' class='session-time mx-2'>" + nbH + "</span>  <button id='session-minus'  class='session-minus' onclick='moin(this)'  value='" + nomMatiere + "' >–</button> </div> ";
 
                         divNames.appendChild(bay);
@@ -169,6 +168,21 @@
                         return s;
                     }
 
+                    function Normaliser() {
+    
+    let s = sommeDic();
+    let h = getHeures();
+    console.log('Normaliser',sommeDic(),getHeures());
+    console.log('NormaliserDIC',DicMatiere);
+
+    for (let i = 0; i < listesMatiere.length; i++) {
+        DicMatiere[listesMatiere[i]] = (DicMatiere[listesMatiere[i]]/s)*h;
+        majAfficheNum(listesMatiere[i]);
+    }
+    console.log('NormaliserEND',sommeDic(),getHeures());
+    console.log('NormaliserDIC',DicMatiere);
+}
+                    
                     function plus(bay) { 
                         console.log('plus');
                         if (DicMatiere[bay.value] < heureTotal){
@@ -182,6 +196,9 @@
 
                                 } else {
                                     DicMatiere[listesMatiere[i]] -= gray * (1-diminpourcentage);
+                                    if(DicMatiere[listesMatiere[i]] < 0) {
+                                        DicMatiere[listesMatiere[i]] = 0
+                                    }
                                     majAfficheNum(listesMatiere[i]);
 
 
@@ -192,20 +209,25 @@
 
                             console.log('+++++>',DicMatiere);
                         }
+                        Normaliser()
 
                     }
                     function moin(bay) {
 
                         console.log('moin');
-                        if (DicMatiere[bay.value] >= -0.5){
+                        if (DicMatiere[bay.value] > 0){
                             let diminpourcentage = (pourcentage/(listesMatiere.length-1));
                             for(let i = 0; i < listesMatiere.length; i++) {
 
 
                                 if(listesMatiere[i] == bay.value) {
-                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage)); 
+                                    DicMatiere[listesMatiere[i]] -= gray *(1+(pourcentage));
+                                     if(DicMatiere[listesMatiere[i]] < 0) {
+                                        DicMatiere[listesMatiere[i]] = 0
+                                    }
 
                                     majAfficheNum(listesMatiere[i]);
+                                    
 
 
 
@@ -220,6 +242,7 @@
 
                             console.log('----->',DicMatiere);
                         }
+                        Normaliser()
 
                     }
 

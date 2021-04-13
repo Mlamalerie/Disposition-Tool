@@ -5,11 +5,11 @@
 
 body {
     display: flex;
-    /*    flex-direction: row;*/
+    flex-direction: row;
     margin: 0rem;
     min-height: 100vh;
-        height: 100%;
-    /*    background: linear-gradient( 135deg, tomato, tomato, #dd5239, #d4462d, #dd5239, #cc3c22);*/
+    height: 100%;
+/*    background: linear-gradient( 135deg, tomato, tomato, #dd5239, #d4462d, #dd5239, #cc3c22);*/
     background: linear-gradient( 135deg, tomato, tomato, #dd5239, #d4462d, #dd5239, #cc3c22);
     color: snow;
     font-weight: 400;
@@ -25,9 +25,9 @@ body {
     margin-top: 0rem;
     display: flex;
     flex-direction: column;
-    width: 35rem;
-
-
+    width: 30rem;
+   
+    
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
@@ -37,11 +37,7 @@ body {
     align-items: center;
 }
 
-@media all and (min-width: 360px) {
-
-
-
-}
+@media all and (min-width: 360px) {}
 
 .title {
     margin-top: 0rem;
@@ -61,7 +57,6 @@ body {
 .preferences {
     display: flex;
     flex-direction: row;
-
     width: 100%;
     text-align: center;
     font-size: 1.2rem;
@@ -69,32 +64,11 @@ body {
     justify-content: space-around;
 }
 
-@media screen and (max-width: 800px){ 
-    .preferences {
 
-        flex-direction: column;
-
-
-    }
-    .session {
-        width: 40%;
-        margin: 5px auto;
-    }
-
-}
-@media screen and (min-width: 800px){ 
-   .session {
-      
-        margin: 0px 2rem;
-    }
-
-}
-
-
-
+.session {}
 
 .session-title {
-    font-size: 85%;
+  font-size: 85%;
     transition: all 0.5s ease;
     font-style: oblique;
     font-family: 'Numans', sans-serif;
@@ -102,8 +76,8 @@ body {
 
 .session-plus {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
     border: 1px solid #c4402f;
     border-radius: 4px;
     background-color: #CC4331;
@@ -118,7 +92,6 @@ body {
 }
 
 .session-plus:hover {
-
     background-color: #d25544;
     box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     text-shadow: 0 -1px -1px #c4402f;
@@ -137,8 +110,8 @@ body {
 
 .session-minus {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 1.7rem;
+    height: 1.7rem;
     border: 1px solid #c4402f;
     border-radius: 4px;
     background-color: #CC4331;
@@ -153,7 +126,6 @@ body {
 }
 
 .session-minus:hover {
-   
     background-color: #d25544;
     box-shadow: 0 4px 0 #c4402f, 0 5px 5px 1px rgba(0, 0, 0, 0.4);
     text-shadow: 0 -1px -1px #c4402f;
@@ -165,7 +137,6 @@ body {
 }
 
 .plus-minus {
-    
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -237,12 +208,12 @@ body {
 
 
 input.form-control,input.form-control:valid {
-    background-color: #bc3b2a;
+       background-color: #bc3b2a;
     border: none;
-
+    
 }
 ::placeholder {
-    color:  #f56c5b!important;
+   color:  #f56c5b!important;
     font-style: italic;
 }
 
@@ -254,9 +225,9 @@ input.form-control,input.form-control:valid {
 }
 
 .highlight {
-    background-color: darkorange;
-    padding-left: 5px;
-    padding-right: 5px; /* adds a little breathing space between highlighted edge and the word */
+  background-color: darkorange;
+  padding-left: 5px;
+  padding-right: 5px; /* adds a little breathing space between highlighted edge and the word */
 }
 
 
