@@ -10,7 +10,6 @@ C'est simple.
 ### 📸 Screenshots 
 
 <img src="img/screen%20(1).png">
-<img src="img/image_2021-04-14_134140.png">
 
 ---
 ### 👨🏾‍💻
