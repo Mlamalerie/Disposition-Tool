@@ -21,7 +21,7 @@ def nbheuresdispo(text):
 	return s;
 		
 HEUREDISPO = nbheuresdispo(dispo)
-print("HEURES : {}".format(HEUREDISPO))
+print(f"HEURES : {HEUREDISPO}")
 
 def saisirmatiere(heuredispo,tasks):
 	ll = tasks.split(',')
@@ -34,31 +34,25 @@ listes = saisirmatiere(HEUREDISPO,tasks)
 #listes = [["BDD",0.75],["Compta",0.1],["Projet Voltaire",0.15]]
 def afficherhorloge(nb):
 	minutes = nb*60
-	
+
 	minutesrestantes = int(minutes%60)
-	
-	
+
+
 	heure = int(minutes//60)
 	print(minutes,minutesrestantes,minutesrestantes//30)
-	if minutesrestantes//30 > 0:
-		minutesrestantes = 30
-	else:
-		minutesrestantes = 0
-	
+	minutesrestantes = 30 if minutesrestantes//30 > 0 else 0
 	text = ""
 	if heure > 0:
-		text += str(heure) +"h "
+		text += f"{heure}h "
 	if minutesrestantes > 0:
 		text += str(minutesrestantes)
-		
+
 	return text
 
 def affiche(l,HEUREDISPO):
 	print(" ------")
-	i = 0
-	for matiere in l:
-		print("   {}) {} : {}".format(i,matiere[0],afficherhorloge(matiere[2])))
-		i += 1
+	for i, matiere in enumerate(l):
+		print(f"   {i}) {matiere[0]} : {afficherhorloge(matiere[2])}")
 	print(" ------")
 
 
@@ -66,30 +60,21 @@ def affiche(l,HEUREDISPO):
 
 def augm(l,choix,pourcentage):
 	c = choix[-1]
-	
+
 	n = len(l)
 	diminpourcentage = (pourcentage/(n-1))
-	
+
 	if choix[0] == '-':
 		c = int(choix[1])
 		pourcentage *= -1
 		diminpourcentage *= -1
 	else:
 		c = int(choix[0])
-	
-	
-	i = 0
-	
-	for mat in l:
+
+
+	for i, mat in enumerate(l):
 		
-		if i == c:
-			
-			mat[2] = mat[2]*(1+pourcentage)
-		else:
-		
-			mat[2] = mat[2]*(1-diminpourcentage)
-			
-		i+= 1
+		mat[2] = mat[2]*(1+pourcentage) if i == c else mat[2]*(1-diminpourcentage)
 	return l		
 		
 
